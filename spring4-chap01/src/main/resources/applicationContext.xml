@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 스프링으로 객체 조립하기 : 스프링 설정 파일 작성 -->
+	
+	<bean id="mavenBuildRunner" class="net.madvirus.spring4.chap01.MavenBuildRunner">
+		<property name="mavenPath">
+			<value>E:\B_Util\6.maven\apache-maven-3.6.3</value>
+		</property>
+	</bean>
+
+	<bean id="sampleProject" class="net.madvirus.spring4.chap01.Project">
+		<property name="srcDirs">
+			<list>
+				<value>src/</value>
+				<value>srcResources/</value>
+			</list>
+		</property>
+		<property name="binDir" value="bin/" />
+		<property name="buildRunner">
+			<ref bean="mavenBuildRunner" />
+		</property>
+	</bean>
+</beans>
