@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user1" class="net.madvirus.spring4.chap02.User">
+		<constructor-arg value="user1" />
+		<constructor-arg value="user1_password" />
+	</bean>
+	
+	<bean id="user2" class="net.madvirus.spring4.chap02.User">
+		<constructor-arg value="user2" />
+		<constructor-arg value="user2_password" />
+	</bean>
+	
+	<bean id="userRepository" class="net.madvirus.spring4.chap02.UserRepository">
+		<property name="users">
+			<list>
+				<ref bean="user1" />
+				<ref bean="user2" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="passwordChangeService" class="net.madvirus.spring4.chap02.PasswordChangeService">
+		<property name="userRepository" ref="userRepository" />
+	</bean>
+	
+	<bean id="authFailLogger" class="net.madvirus.spring4.chap02.AuthFailLogger">
+		<property name="threshold" value="5" />
+	</bean>
+	
+	<bean id="authenticationService" class="net.madvirus.spring4.chap02.AuthenticationService">
+		<property name="failLogger" ref="authFailLogger" />
+		<property name="userRepository">
+			<ref bean="userRepository" />
+		</property>
+	</bean>
+
+</beans>
