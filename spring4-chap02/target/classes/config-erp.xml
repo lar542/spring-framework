@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		스프링은 객체를 생성할 때 기본적으로 생성자를 사용하기 때문에 
+		생성자가 아닌 static 메서드를 이용해 생성한다면 factory-method 속성을 지정해주어야 한다. 
+	-->
+	<bean id="erpClientFactory" class="net.madvirus.spring4.chap02.erp.ErpClientFactory" factory-method="instance">
+		<constructor-arg>
+			<props>
+				<prop key="server">10.50.0.101</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+
+</beans>
