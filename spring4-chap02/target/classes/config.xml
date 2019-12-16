@@ -23,11 +23,11 @@
 	</bean>
 	
 	<bean id="passwordChangeService" class="net.madvirus.spring4.chap02.PasswordChangeService">
-		<property name="userRepository" ref="userRepository" />
+		<constructor-arg><ref bean="userRepository" /></constructor-arg>
 	</bean>
 	
 	<bean id="authFailLogger" class="net.madvirus.spring4.chap02.AuthFailLogger">
-		<property name="threshold" value="5" />
+		<property name="threshold" value="2" />
 	</bean>
 	
 	<bean id="authenticationService" class="net.madvirus.spring4.chap02.AuthenticationService">

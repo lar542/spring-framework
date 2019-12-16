@@ -7,7 +7,7 @@ public class PasswordChangeService {
 
 	private UserRepository userRepository;
 
-	public void setUserRepository(UserRepository userRepository) {
+	public PasswordChangeService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	
